@@ -51,7 +51,7 @@ public class InventoryApp {
                     searchVehicleByColor(getInputFromConsole("Input the color to search for:", s, true), vehicleList);
                 }
                 case 5 -> {
-                    vehicleList = addVehicleToList(createVehicleFromInput(s), vehicleList);
+                    addVehicleToList(createVehicleFromInput(s), vehicleList);
                 }
                 default -> {
                     exitFlag = true;
@@ -107,6 +107,7 @@ public class InventoryApp {
         }
     }
 
+    //There's no input security on this method because I got lazy, frankly
     public static Vehicle createVehicleFromInput(Scanner s) {
         var id = Long.parseLong(getInputFromConsole("Enter the new vehicle's ID number: ", s, true));
         var model = getInputFromConsole("Enter the vehicle's make and model: ", s, true);
@@ -116,7 +117,7 @@ public class InventoryApp {
         return new Vehicle(id, model, col, odr, pri);
     }
 
-    public static Vehicle[] addVehicleToList(Vehicle v, Vehicle[] vehicleList) {
+    public static void addVehicleToList(Vehicle v, Vehicle[] vehicleList) {
         int openIndex = 0;
         for (int i = 0; i < vehicleList.length; i++) {
             if (Objects.isNull(vehicleList[i])) {
@@ -125,6 +126,5 @@ public class InventoryApp {
             }
         }
         vehicleList[openIndex] = v;
-        return vehicleList;
     }
 }
