@@ -37,9 +37,7 @@ public class InventoryApp {
         while (!exitFlag) {
             switch (command) {
                 case 1 -> displayVehicleList(vehicleList);
-                case 2 -> {
-                    searchVehicleByModel(getInputFromConsole("Input the model to search for:", s, true), vehicleList);
-                }
+                case 2 -> searchVehicleByModel(getInputFromConsole("Input the model to search for:", s, true), vehicleList);
                 case 3 -> {
                     String lowInput = getInputFromConsole("Input the low end of your price range: ",s, true);
                     double low = !lowInput.isEmpty() ? Double.parseDouble(lowInput) : 0;
@@ -47,12 +45,8 @@ public class InventoryApp {
                     double high = !highInput.isEmpty() ? Double.parseDouble(highInput) : 0;
                     searchVehicleByPriceRange(low, high, vehicleList);
                 }
-                case 4 -> {
-                    searchVehicleByColor(getInputFromConsole("Input the color to search for:", s, true), vehicleList);
-                }
-                case 5 -> {
-                    addVehicleToList(createVehicleFromInput(s), vehicleList);
-                }
+                case 4 -> searchVehicleByColor(getInputFromConsole("Input the color to search for:", s, true), vehicleList);
+                case 5 -> addVehicleToList(createVehicleFromInput(s), vehicleList);
                 default -> {
                     exitFlag = true;
                     System.out.println("Exit command inputted or invalid input received. Exiting program.");
